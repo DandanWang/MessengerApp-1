@@ -10,7 +10,6 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.content.Intent;
-
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -34,6 +33,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,6 +75,15 @@ public class MainActivity extends ActionBarActivity {
 		Button showExression=(Button) this.findViewById(R.id.edit);
 	
 		showExression.setOnClickListener(new OnClickListener(){
+			@Override
+			public void onClick(View view) {
+				LayoutInflater inflater = mFragment.getActivity().getLayoutInflater();
+				ViewGroup linear = (ViewGroup) mFragment.getActivity().findViewById(R.id.main_linear);
+				View showImg = inflater.inflate(R.layout.fragment_face, linear, false);
+				linear.addView(showImg);
+			}
+			
+			/*
 			//this method is to edit expression in textView
 			public void onClick(View view){
 				//randomly choose a number between 1 to 9
@@ -97,7 +106,7 @@ public class MainActivity extends ActionBarActivity {
 				}catch (Exception e){
 					e.printStackTrace();
 				}	
-			}
+			}*/
 		});
 		// Bind Handler with main Looper
 		mHandler = new Handler(Looper.getMainLooper()) {
